@@ -114,7 +114,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
             for info in infos {
                 let item = NSMenuItem()
                 item.representedObject = info
-                item.title = (info.open ? "🟢 " : "🔴 ") + info.name
+                item.title = (info.open ? "🟩 " : "🟥 ") + info.name
                 item.target = self
                 item.action = #selector(openVenueURL)
                 menu.addItem(item)
