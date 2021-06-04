@@ -11,32 +11,46 @@ import UserNotifications
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDelegate {
-
     
     private var statusBarItem: NSStatusItem?
-    private let publisher = APIClient().newPublisher()
-    private var cancellable: AnyCancellable?
+
+    private var networkCancellable: AnyCancellable?
+    private var intervalCancellable: AnyCancellable?
     private var lastUpdate: Date?
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+
+        UserDefaults.standard.registerDefaults()
+
         UNUserNotificationCenter.current().delegate = self
 
         setUpMenuItem()
 
-        cancellable = publisher
-            .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { completion in
-            print(completion)
-        }, receiveValue: { [weak self] venueInfos in
-            self?.sendNotificationIfNeeded(for: venueInfos)
-            self?.updateMenu(for: venueInfos)
-            self?.lastUpdate = Date()
-        })
+        intervalCancellable = UserDefaults.standard
+            .publisher(for: \.pollingInterval)
+            .debounce(for: 1, scheduler: DispatchQueue.main)
+            .sink { [weak self] interval in
+                self?.setUpPublisher(with: interval)
+            }
 
     }
 
-    private func sendNotificationIfNeeded(for infos: [VenueInfo]) {
+    @objc private func setUpPublisher(with pollingInterval: TimeInterval) {
 
+        self.networkCancellable = APIClient
+            .newPublisher(with: pollingInterval)
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] result in
+                self?.sendNotificationIfNeeded(for: result)
+                self?.updateMenu(for: result)
+                self?.lastUpdate = Date()
+            }
+
+    }
+
+    private func sendNotificationIfNeeded(for result: Result<[VenueInfo], Error>) {
+        guard UserDefaults.standard.bool(forKey: "notificationsEnabled"),
+              let infos = try? result.get() else { return }
         let openVenues = infos.filter(\.open)
         let center = UNUserNotificationCenter.current()
 
@@ -87,21 +101,28 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
             button.title = "💉"
             button.setAccessibilityLabel("VaccinationMonitor")
         }
-
     }
 
-    private func updateMenu(for infos: [VenueInfo]) {
+    private func updateMenu(for result: Result<[VenueInfo], Error>) {
         guard let statusBarItem = statusBarItem else { return }
         let menu = NSMenu(title: "VaccinationMonitor")
 
         menu.addItem(UpdatedAtMenuItem(updatedAt: lastUpdate))
 
-        for info in infos {
+        if let infos = try? result.get(), !infos.isEmpty {
+
+            for info in infos {
+                let item = NSMenuItem()
+                item.representedObject = info
+                item.title = (info.open ? "🟢 " : "🔴 ") + info.name
+                item.target = self
+                item.action = #selector(openVenueURL)
+                menu.addItem(item)
+            }
+
+        } else {
             let item = NSMenuItem()
-            item.representedObject = info
-            item.title = (info.open ? "🟢 " : "🔴 ") + info.name
-            item.target = self
-            item.action = #selector(openVenueURL)
+            item.title = "⚠️ Connection Error"
             menu.addItem(item)
         }
 
@@ -116,7 +137,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
               let url = venue.url else { return }
         NSWorkspace.shared.open(url)
     }
-
 
     // MARK: - UNUserNotificationCenterDelegate
 

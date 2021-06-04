@@ -13,33 +13,30 @@ struct APIResponse: Decodable {
 }
 
 class APIClient {
-    private let apiURL = URL(string: "https://api.impfstoff.link/?robot=1")!
-    private let pollingInterval: TimeInterval = 2
+    private static let apiURL = URL(string: "https://api.impfstoff.link/?robot=1")!
 
-    func newPublisher() -> AnyPublisher<[VenueInfo], Error> {
+    static func newPublisher(with pollingInterval: TimeInterval) -> AnyPublisher<Result<[VenueInfo], Error>, Never> {
+        print("newPublisher")
+
 
         let timer = Timer
             .publish(every: pollingInterval, on: .main, in: .default)
             .autoconnect()
 
         let publisher = URLSession.shared.dataTaskPublisher(for: apiURL)
-            .retry(0)
-            .tryMap { data, response -> [VenueInfo] in
+            .tryMap { data, response -> Result<[VenueInfo], Error> in
                 let decoder = JSONDecoder()
                 decoder.dateDecodingStrategy = .millisecondsSince1970
                 let response = try decoder.decode(APIResponse.self, from: data)
-                return response.stats
+                return .success(response.stats)
+            }
+            .catch { error in
+                return Just(.failure(error))
             }
 
         return timer
             .flatMap { _ in publisher }
             .eraseToAnyPublisher()
     }
-
-}
-
-
-func decodeResponse() {
-
 
 }
