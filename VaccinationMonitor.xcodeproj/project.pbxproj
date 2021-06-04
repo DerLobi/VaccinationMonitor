@@ -14,6 +14,7 @@
 		CA1630E9266A53340062ADE8 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1630E8266A53340062ADE8 /* APIClient.swift */; };
 		CA1630EB266A60910062ADE8 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1630EA266A60910062ADE8 /* Models.swift */; };
 		CA1630EF266A6B6A0062ADE8 /* UpdatedAtMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1630EE266A6B6A0062ADE8 /* UpdatedAtMenuItem.swift */; };
+		CA1630F5266AB56F0062ADE8 /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1630F4266AB56F0062ADE8 /* UserDefaults+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		CA1630E8266A53340062ADE8 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		CA1630EA266A60910062ADE8 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		CA1630EE266A6B6A0062ADE8 /* UpdatedAtMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatedAtMenuItem.swift; sourceTree = "<group>"; };
+		CA1630F4266AB56F0062ADE8 /* UserDefaults+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				CA1630E8266A53340062ADE8 /* APIClient.swift */,
 				CA1630EA266A60910062ADE8 /* Models.swift */,
 				CA1630EE266A6B6A0062ADE8 /* UpdatedAtMenuItem.swift */,
+				CA1630F4266AB56F0062ADE8 /* UserDefaults+Extensions.swift */,
 			);
 			path = VaccinationMonitor;
 			sourceTree = "<group>";
@@ -145,6 +148,7 @@
 				CA1630EF266A6B6A0062ADE8 /* UpdatedAtMenuItem.swift in Sources */,
 				CA1630D9266A531F0062ADE8 /* AppDelegate.swift in Sources */,
 				CA1630E9266A53340062ADE8 /* APIClient.swift in Sources */,
+				CA1630F5266AB56F0062ADE8 /* UserDefaults+Extensions.swift in Sources */,
 				CA1630EB266A60910062ADE8 /* Models.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

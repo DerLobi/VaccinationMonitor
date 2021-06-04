@@ -683,8 +683,8 @@
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
-                <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                <windowController storyboardIdentifier="Preferences" id="B8D-0N-5wS" sceneMemberID="viewController">
+                    <window key="window" title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
@@ -706,19 +706,22 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="VaccinationMonitor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="500" height="330"/>
+                        <rect key="frame" x="0.0" y="0.0" width="500" height="351"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yex-zA-f9J">
-                                <rect key="frame" x="38" y="290" width="152" height="16"/>
+                                <rect key="frame" x="38" y="311" width="152" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Update every 5 seconds" id="ULg-Xy-rHW">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <connections>
+                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.intervalText" id="R4a-Ag-owR"/>
+                                </connections>
                             </textField>
                             <box title="Venues" translatesAutoresizingMaskIntoConstraints="NO" id="udB-V2-YGh">
-                                <rect key="frame" x="17" y="76" width="466" height="196"/>
+                                <rect key="frame" x="17" y="97" width="466" height="196"/>
                                 <view key="contentView" id="nya-GJ-8Wc">
                                     <rect key="frame" x="3" y="3" width="460" height="178"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -796,21 +799,42 @@
                                 </view>
                             </box>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bLM-PP-RoU">
-                                <rect key="frame" x="38" y="38" width="341" height="18"/>
+                                <rect key="frame" x="38" y="59" width="341" height="18"/>
                                 <buttonCell key="cell" type="check" title="Send notifications if new appointments are available" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="E0P-W6-AmI">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <binding destination="XfG-lQ-9wD" name="enabled" keyPath="self.canEnableNotifications" id="3PH-dE-cLi"/>
+                                    <binding destination="XfG-lQ-9wD" name="value" keyPath="self.notificationsEnabled" id="rBp-UT-3Kc"/>
+                                </connections>
                             </button>
                             <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZiY-VG-BCy">
-                                <rect key="frame" x="193" y="284" width="19" height="28"/>
+                                <rect key="frame" x="193" y="306" width="19" height="26"/>
                                 <stepperCell key="cell" continuous="YES" alignment="left" minValue="1" maxValue="120" doubleValue="5" id="ZnE-kP-fQC"/>
+                                <connections>
+                                    <binding destination="QhV-i3-jqA" name="value" keyPath="values.pollingInterval" id="TKt-Qr-8YS"/>
+                                </connections>
                             </stepper>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pwn-88-0G1">
+                                <rect key="frame" x="33" y="13" width="192" height="32"/>
+                                <buttonCell key="cell" type="push" title="Open System Preferences" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BnM-1c-U6C">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="openSystemPreferences:" target="XfG-lQ-9wD" id="mpV-ts-nc7"/>
+                                    <binding destination="XfG-lQ-9wD" name="hidden" keyPath="self.canEnableNotifications" id="XqJ-ML-1ET"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="pwn-88-0G1" secondAttribute="trailing" constant="20" symbolic="YES" id="3CU-Gr-x8L"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="bLM-PP-RoU" secondAttribute="trailing" constant="20" symbolic="YES" id="3xx-b5-TXp"/>
-                            <constraint firstAttribute="bottom" secondItem="bLM-PP-RoU" secondAttribute="bottom" constant="39" id="9n5-t2-Nlr"/>
+                            <constraint firstItem="pwn-88-0G1" firstAttribute="top" secondItem="bLM-PP-RoU" secondAttribute="bottom" constant="20" symbolic="YES" id="EIQ-ua-TpP"/>
+                            <constraint firstItem="pwn-88-0G1" firstAttribute="leading" secondItem="bLM-PP-RoU" secondAttribute="leading" id="Mw2-Te-nwN"/>
                             <constraint firstItem="ZiY-VG-BCy" firstAttribute="centerY" secondItem="yex-zA-f9J" secondAttribute="centerY" id="U06-MQ-MjG"/>
+                            <constraint firstAttribute="bottom" secondItem="bLM-PP-RoU" secondAttribute="bottom" constant="60" id="URg-w5-Zf3"/>
                             <constraint firstAttribute="trailing" secondItem="udB-V2-YGh" secondAttribute="trailing" constant="20" symbolic="YES" id="UWK-rP-8r3"/>
                             <constraint firstItem="ZiY-VG-BCy" firstAttribute="leading" secondItem="yex-zA-f9J" secondAttribute="trailing" constant="8" symbolic="YES" id="Woc-FE-hxz"/>
                             <constraint firstItem="udB-V2-YGh" firstAttribute="top" secondItem="yex-zA-f9J" secondAttribute="bottom" constant="18" id="ceQ-bc-Fro"/>
@@ -818,13 +842,15 @@
                             <constraint firstItem="bLM-PP-RoU" firstAttribute="top" secondItem="nya-GJ-8Wc" secondAttribute="bottom" constant="24" id="fm2-Yw-aYs"/>
                             <constraint firstItem="yex-zA-f9J" firstAttribute="leading" secondItem="bLM-PP-RoU" secondAttribute="leading" id="jNu-ff-58L"/>
                             <constraint firstItem="bLM-PP-RoU" firstAttribute="leading" secondItem="nya-GJ-8Wc" secondAttribute="leading" constant="20" id="l5G-by-Sa7"/>
+                            <constraint firstAttribute="bottom" secondItem="pwn-88-0G1" secondAttribute="bottom" constant="20" symbolic="YES" id="nbY-ln-433"/>
                             <constraint firstItem="udB-V2-YGh" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="uR6-90-zJt"/>
                         </constraints>
                     </view>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController representsSharedInstance="YES" id="QhV-i3-jqA"/>
             </objects>
-            <point key="canvasLocation" x="75" y="754"/>
+            <point key="canvasLocation" x="75" y="764.5"/>
         </scene>
     </scenes>
 </document>
