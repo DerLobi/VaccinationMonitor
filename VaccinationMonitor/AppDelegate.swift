@@ -73,7 +73,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
             print("removing notifications for \(notificationsToRemove)")
             center.removeDeliveredNotifications(withIdentifiers: notificationsToRemove)
 
-            for info in openVenues {
+            for info in openVenues where UserDefaults.standard.bool(forKey: info.id + "Filter") {
 
                 let identifier = info.id
 
@@ -118,7 +118,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 
         if let infos = try? result.get(), !infos.isEmpty {
 
-            for info in infos {
+            for info in infos where UserDefaults.standard.bool(forKey: info.id + "Filter") {
                 let item = NSMenuItem()
                 item.representedObject = info
                 item.title = (info.open ? "🟩 " : "🟥 ") + info.name

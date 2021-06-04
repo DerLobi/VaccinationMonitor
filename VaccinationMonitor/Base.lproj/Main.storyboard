@@ -735,6 +735,9 @@
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
+                                                    <connections>
+                                                        <binding destination="QhV-i3-jqA" name="value" keyPath="values.arenaFilter" id="Gm8-N7-UZU"/>
+                                                    </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fTQ-il-ys6">
                                                     <rect key="frame" x="-2" y="95" width="308" height="18"/>
@@ -742,6 +745,9 @@
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
+                                                    <connections>
+                                                        <binding destination="QhV-i3-jqA" name="value" keyPath="values.tempelhofFilter" id="VDP-am-xA1"/>
+                                                    </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DiV-AY-hqK">
                                                     <rect key="frame" x="-2" y="71" width="214" height="18"/>
@@ -749,6 +755,9 @@
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
+                                                    <connections>
+                                                        <binding destination="QhV-i3-jqA" name="value" keyPath="values.messeFilter" id="pzt-aB-q5Q"/>
+                                                    </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wK0-dh-f44">
                                                     <rect key="frame" x="-2" y="47" width="232" height="18"/>
@@ -756,6 +765,9 @@
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
+                                                    <connections>
+                                                        <binding destination="QhV-i3-jqA" name="value" keyPath="values.velodromFilter" id="P2o-rs-SQu"/>
+                                                    </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="K2y-M2-MXK">
                                                     <rect key="frame" x="-2" y="23" width="337" height="18"/>
@@ -763,6 +775,9 @@
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
+                                                    <connections>
+                                                        <binding destination="QhV-i3-jqA" name="value" keyPath="values.tegelFilter" id="JZx-de-blb"/>
+                                                    </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Has-2X-Wk2">
                                                     <rect key="frame" x="-2" y="-1" width="222" height="18"/>
@@ -770,6 +785,9 @@
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
+                                                    <connections>
+                                                        <binding destination="QhV-i3-jqA" name="value" keyPath="values.erikaFilter" id="L1L-9g-kLt"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <visibilityPriorities>
