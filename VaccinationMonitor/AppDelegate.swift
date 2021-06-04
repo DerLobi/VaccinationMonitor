@@ -7,10 +7,10 @@
 
 import Cocoa
 import Combine
-
+import UserNotifications
 
 @main
-class AppDelegate: NSObject, NSApplicationDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDelegate {
 
     
     private var statusBarItem: NSStatusItem?
@@ -19,6 +19,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private var lastUpdate: Date?
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        UNUserNotificationCenter.current().delegate = self
+
         setUpMenuItem()
 
         cancellable = publisher
@@ -34,6 +36,47 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     private func sendNotificationIfNeeded(for infos: [VenueInfo]) {
+
+        let openVenues = infos.filter(\.open)
+        let center = UNUserNotificationCenter.current()
+
+        center.getDeliveredNotifications { deliveredNotifications in
+
+            let openVenueIDs = openVenues.map(\.id)
+            print("currently open: \(openVenueIDs)")
+
+            let notificationsToRemove = deliveredNotifications
+                .map { $0.request.identifier }
+                .filter { !openVenueIDs.contains($0) }
+
+            print("removing notifications for \(notificationsToRemove)")
+            center.removeDeliveredNotifications(withIdentifiers: notificationsToRemove)
+
+            for info in openVenues {
+
+                let identifier = info.id
+
+                if deliveredNotifications.contains(where: { $0.request.identifier == identifier }) { continue }
+
+                let content = UNMutableNotificationContent()
+                content.title = info.name
+                content.body = "New vaccination appointments just became available."
+                if let url = info.url {
+                    content.userInfo = [
+                        "url": url.absoluteString
+                    ]
+                }
+
+                let request = UNNotificationRequest(identifier: identifier, content: content, trigger: nil)
+                print("showing notification for \(identifier)")
+                UNUserNotificationCenter.current().add(request) { error in
+                    if let error = error {
+                        print(error.localizedDescription)
+                    }
+                }
+            }
+
+        }
 
     }
 
@@ -74,4 +117,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSWorkspace.shared.open(url)
     }
 
+
+    // MARK: - UNUserNotificationCenterDelegate
+
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+
+        defer { completionHandler() }
+        guard let urlString = response.notification.request.content.userInfo["url"] as? String,
+           let url = URL(string: urlString) else { return }
+
+        NSWorkspace.shared.open(url)
+    }
 }
