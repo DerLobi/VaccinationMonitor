@@ -18,6 +18,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
     private var intervalCancellable: AnyCancellable?
     private var lastUpdate: Date?
 
+    private lazy var windowController: NSWindowController = {
+        let storyboard = NSStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateController(identifier: "Preferences") as NSWindowController
+        return controller
+    }()
+
+
     func applicationDidFinishLaunching(_ aNotification: Notification) {
 
         UserDefaults.standard.registerDefaults()
@@ -127,6 +134,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
         }
 
         menu.addItem(.separator())
+        let preferencesItem = NSMenuItem(title: "Preferences", action: #selector(self.showPreferences(_:)), keyEquivalent: ",")
+        menu.addItem(preferencesItem)
+
         menu.addItem(NSMenuItem(title: "Quit VaccinationMonitor", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
 
         statusBarItem.menu = menu
@@ -136,6 +146,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
         guard let venue = sender.representedObject as? VenueInfo,
               let url = venue.url else { return }
         NSWorkspace.shared.open(url)
+    }
+
+    @objc func showPreferences(_ sender: NSMenuItem) {
+        windowController.window?.makeKeyAndOrderFront(sender)
     }
 
     // MARK: - UNUserNotificationCenterDelegate
