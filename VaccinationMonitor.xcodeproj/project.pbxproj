@@ -61,16 +61,16 @@
 		CA1630D7266A531F0062ADE8 /* VaccinationMonitor */ = {
 			isa = PBXGroup;
 			children = (
-				CA1630D8266A531F0062ADE8 /* AppDelegate.swift */,
-				CA1630DA266A531F0062ADE8 /* ViewController.swift */,
-				CA1630DC266A53210062ADE8 /* Assets.xcassets */,
-				CA1630DE266A53210062ADE8 /* Main.storyboard */,
-				CA1630E1266A53210062ADE8 /* Info.plist */,
-				CA1630E2266A53210062ADE8 /* VaccinationMonitor.entitlements */,
 				CA1630E8266A53340062ADE8 /* APIClient.swift */,
+				CA1630D8266A531F0062ADE8 /* AppDelegate.swift */,
+				CA1630DC266A53210062ADE8 /* Assets.xcassets */,
+				CA1630E1266A53210062ADE8 /* Info.plist */,
+				CA1630DE266A53210062ADE8 /* Main.storyboard */,
 				CA1630EA266A60910062ADE8 /* Models.swift */,
 				CA1630EE266A6B6A0062ADE8 /* UpdatedAtMenuItem.swift */,
 				CA1630F4266AB56F0062ADE8 /* UserDefaults+Extensions.swift */,
+				CA1630E2266A53210062ADE8 /* VaccinationMonitor.entitlements */,
+				CA1630DA266A531F0062ADE8 /* ViewController.swift */,
 			);
 			path = VaccinationMonitor;
 			sourceTree = "<group>";
@@ -218,7 +218,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -273,7 +273,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -290,6 +290,7 @@
 				CODE_SIGN_ENTITLEMENTS = VaccinationMonitor/VaccinationMonitor.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = ES9894LW4A;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = VaccinationMonitor/Info.plist;
@@ -311,6 +312,7 @@
 				CODE_SIGN_ENTITLEMENTS = VaccinationMonitor/VaccinationMonitor.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = ES9894LW4A;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = VaccinationMonitor/Info.plist;
