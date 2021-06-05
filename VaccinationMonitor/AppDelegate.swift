@@ -117,6 +117,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
         if let button = statusBarItem?.button {
             button.title = "💉"
             button.setAccessibilityLabel("VaccinationMonitor")
+            button.wantsLayer = true
+            button.layer?.cornerRadius = 4
         }
         updateMenu(for: .success([]))
     }
@@ -129,13 +131,21 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 
         if let infos = try? result.get() {
 
-            for info in infos where UserDefaults.standard.bool(forKey: info.id + "Filter") {
+            let filteredInfos = infos.filter { UserDefaults.standard.bool(forKey: $0.id + "Filter") }
+
+            for info in filteredInfos {
                 let item = NSMenuItem()
                 item.representedObject = info
                 item.title = (info.open ? "🟩 " : "🟥 ") + info.name
                 item.target = self
                 item.action = #selector(openVenueURL)
                 menu.addItem(item)
+            }
+
+            if filteredInfos.contains(where: { $0.open }) {
+                statusBarItem.button?.layer?.backgroundColor = NSColor.systemGreen.cgColor
+            } else {
+                statusBarItem.button?.layer?.backgroundColor = NSColor.clear.cgColor
             }
 
         } else {
