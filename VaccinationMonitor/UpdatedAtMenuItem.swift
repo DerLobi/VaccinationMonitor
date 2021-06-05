@@ -20,8 +20,9 @@ class UpdatedAtMenuItem: NSMenuItem {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private let updateFormatter: RelativeDateTimeFormatter = {
+    private static let updateFormatter: RelativeDateTimeFormatter = {
         let formatter = RelativeDateTimeFormatter()
+        formatter.dateTimeStyle = .named
         formatter.locale = .autoupdatingCurrent
         return formatter
     }()
@@ -29,9 +30,9 @@ class UpdatedAtMenuItem: NSMenuItem {
     override var title: String {
         get {
             if let updatedAt = updatedAt {
-                return "Last updated " + updateFormatter.localizedString(for: updatedAt, relativeTo: Date())
+                return "Last updated " + Self.updateFormatter.localizedString(for: updatedAt, relativeTo: Date())
             } else {
-                return "Not updated"
+                return "Not updated yet"
             }
         }
         set {}

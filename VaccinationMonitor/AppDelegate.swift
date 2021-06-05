@@ -48,9 +48,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
             .newPublisher(with: pollingInterval)
             .receive(on: DispatchQueue.main)
             .sink { [weak self] result in
+                self?.lastUpdate = Date()
                 self?.sendNotificationIfNeeded(for: result)
                 self?.updateMenu(for: result)
-                self?.lastUpdate = Date()
             }
 
     }
@@ -118,6 +118,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
             button.title = "💉"
             button.setAccessibilityLabel("VaccinationMonitor")
         }
+        updateMenu(for: .success([]))
     }
 
     private func updateMenu(for result: Result<[VenueInfo], Error>) {
@@ -126,7 +127,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 
         menu.addItem(UpdatedAtMenuItem(updatedAt: lastUpdate))
 
-        if let infos = try? result.get(), !infos.isEmpty {
+        if let infos = try? result.get() {
 
             for info in infos where UserDefaults.standard.bool(forKey: info.id + "Filter") {
                 let item = NSMenuItem()
