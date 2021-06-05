@@ -15,7 +15,7 @@ class UpdatedAtMenuItem: NSMenuItem {
         self.updatedAt = updatedAt
         super.init(title: "Not updated", action: nil, keyEquivalent: "")
     }
-    
+
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

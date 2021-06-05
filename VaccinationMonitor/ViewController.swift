@@ -29,7 +29,7 @@ class ViewController: NSViewController {
                         if granted {
                             UserDefaults.standard.set(true, forKey: "notificationsEnabled")
                         } else {
-                            self?.notificationsEnabled = false                            
+                            self?.notificationsEnabled = false
                         }
                     }
             } else {
@@ -77,4 +77,3 @@ class ViewController: NSViewController {
         NSWorkspace.shared.open(notificationSettingsURL)
     }
 }
-

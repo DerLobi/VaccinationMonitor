@@ -12,7 +12,7 @@ import OSLog
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDelegate {
-    
+
     private var statusBarItem: NSStatusItem?
 
     private var networkCancellable: AnyCancellable?
@@ -24,7 +24,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
         let controller = storyboard.instantiateController(identifier: "Preferences") as NSWindowController
         return controller
     }()
-
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
 
@@ -148,7 +147,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
         let preferencesItem = NSMenuItem(title: "Preferences", action: #selector(self.showPreferences(_:)), keyEquivalent: ",")
         menu.addItem(preferencesItem)
 
-        menu.addItem(NSMenuItem(title: "Quit VaccinationMonitor", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
+        menu.addItem(
+            NSMenuItem(title: "Quit VaccinationMonitor",
+                       action: #selector(NSApplication.terminate(_:)),
+                       keyEquivalent: "q"))
 
         statusBarItem.menu = menu
     }
@@ -165,7 +167,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 
     // MARK: - UNUserNotificationCenterDelegate
 
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
 
         defer { completionHandler() }
         guard let urlString = response.notification.request.content.userInfo["url"] as? String,

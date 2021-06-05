@@ -95,6 +95,4 @@ extension UserDefaults {
             set(newValue, forKey: "erikaFilter")
         }
     }
-
-
 }

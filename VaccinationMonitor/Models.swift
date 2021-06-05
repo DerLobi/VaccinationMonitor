@@ -15,7 +15,7 @@ struct VenueInfo: Decodable {
         "messe": "https://www.doctolib.de/institut/berlin/ciz-berlin-berlin?pid=practice-158434",
         "velodrom": "https://www.doctolib.de/institut/berlin/ciz-berlin-berlin?pid=practice-158435",
         "tegel": "https://www.doctolib.de/institut/berlin/ciz-berlin-berlin?pid=practice-158436",
-        "erika": "https://www.doctolib.de/institut/berlin/ciz-berlin-berlin?pid=practice-158437",
+        "erika": "https://www.doctolib.de/institut/berlin/ciz-berlin-berlin?pid=practice-158437"
     ]
 
     let id: String
@@ -26,7 +26,7 @@ struct VenueInfo: Decodable {
 
     var url: URL? {
         Self.urls[id]
-            .flatMap(URL.init(string:))        
+            .flatMap(URL.init(string:))
     }
 
     private enum CodingKeys: String, CodingKey {

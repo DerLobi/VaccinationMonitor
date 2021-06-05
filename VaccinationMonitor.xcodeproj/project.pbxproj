@@ -85,6 +85,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CA1630E5266A53210062ADE8 /* Build configuration list for PBXNativeTarget "VaccinationMonitor" */;
 			buildPhases = (
+				CA6681B9266B99B1006CD1EF /* SwiftLint */,
 				CA1630D1266A531F0062ADE8 /* Sources */,
 				CA1630D2266A531F0062ADE8 /* Frameworks */,
 				CA1630D3266A531F0062ADE8 /* Resources */,
@@ -141,6 +142,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CA6681B9266B99B1006CD1EF /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nexport PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CA1630D1266A531F0062ADE8 /* Sources */ = {
