@@ -17,6 +17,7 @@
 		CA1630F5266AB56F0062ADE8 /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1630F4266AB56F0062ADE8 /* UserDefaults+Extensions.swift */; };
 		CA6681B8266B9071006CD1EF /* Logger+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6681B7266B9071006CD1EF /* Logger+Default.swift */; };
 		CA892996266BA08500ECC545 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA892998266BA08500ECC545 /* Localizable.strings */; };
+		CA89299B266BAD9100ECC545 /* notification.wav in Resources */ = {isa = PBXBuildFile; fileRef = CA89299A266BAD9100ECC545 /* notification.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		CA6681BF266B9F04006CD1EF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		CA892997266BA08500ECC545 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CA892999266BA08900ECC545 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CA89299A266BAD9100ECC545 /* notification.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = notification.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 				CA1630E1266A53210062ADE8 /* Info.plist */,
 				CA1630DE266A53210062ADE8 /* Main.storyboard */,
 				CA1630EA266A60910062ADE8 /* Models.swift */,
+				CA89299A266BAD9100ECC545 /* notification.wav */,
 				CA1630EE266A6B6A0062ADE8 /* UpdatedAtMenuItem.swift */,
 				CA1630F4266AB56F0062ADE8 /* UserDefaults+Extensions.swift */,
 				CA1630E2266A53210062ADE8 /* VaccinationMonitor.entitlements */,
@@ -146,6 +149,7 @@
 				CA1630DD266A53210062ADE8 /* Assets.xcassets in Resources */,
 				CA892996266BA08500ECC545 /* Localizable.strings in Resources */,
 				CA1630E0266A53210062ADE8 /* Main.storyboard in Resources */,
+				CA89299B266BAD9100ECC545 /* notification.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

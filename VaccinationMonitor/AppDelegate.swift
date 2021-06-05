@@ -38,7 +38,19 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 
         UserDefaults.standard.registerDefaults()
 
-        UNUserNotificationCenter.current().delegate = self
+        let center = UNUserNotificationCenter.current()
+        center.delegate = self
+
+        let openBookingPage = UNNotificationAction(identifier: "openBookingPage",
+                                                   title: NSLocalizedString("notification.action.title", comment: ""),
+                                                   options: [])
+
+        let newAppointmentsCategory = UNNotificationCategory(identifier: "NewAppointmentsAvailable",
+                                                             actions: [openBookingPage],
+                                                             intentIdentifiers: [],
+                                                             options: .customDismissAction)
+
+        center.setNotificationCategories([newAppointmentsCategory])
 
         updateMenu(for: .success([]))
 
@@ -97,7 +109,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 
                 let content = UNMutableNotificationContent()
                 content.title = info.name
+                content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: "notification"))
                 content.body = NSLocalizedString("notification.body", comment: "")
+                content.categoryIdentifier = "NewAppointmentsAvailable"
                 if let url = info.url {
                     content.userInfo = [
                         "url": url.absoluteString

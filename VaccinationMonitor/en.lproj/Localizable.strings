@@ -13,3 +13,4 @@
 "update.interval.title" = "Update every %i seconds";
 "notification.body" = "New vaccination appointments just became available.";
 "connection.error" = "⚠️ Connection Error";
+"notification.action.title" = "Open booking page";
