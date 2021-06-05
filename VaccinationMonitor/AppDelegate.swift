@@ -67,6 +67,30 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
         self.networkCancellable = APIClient
             .newPublisher(with: pollingInterval)
             .receive(on: DispatchQueue.main)
+            .map { result -> Result<[VenueInfo], Error> in
+                if case .success(let infos) = result {
+                    let filtered = infos.filter { UserDefaults.standard.bool(forKey: $0.id + "Filter") }
+                    return .success(filtered)
+                }
+                return result
+            }
+            .removeDuplicates(by: { lhs, rhs in
+                switch (lhs, rhs) {
+                case let (.success(lhsInfos), .success(rhsInfos)):
+                    guard lhsInfos.count == rhsInfos.count else { return false }
+                    let isDuplicate = lhsInfos
+                        .sorted(by: { $0.id < $1.id })
+                        .elementsEqual(rhsInfos) { $0.open == $1.open }
+                    if isDuplicate {
+                        Logger.app.debug("response is duplicate to last response")
+                    }
+                    return isDuplicate
+                case let (.failure(lhsError), .failure(rhsError)):
+                    return lhsError.localizedDescription == rhsError.localizedDescription
+                default:
+                    return false
+                }
+            })
             .sink { [weak self] result in
                 self?.lastUpdate = Date()
                 self?.sendNotificationIfNeeded(for: result)
@@ -101,7 +125,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 
             center.removeDeliveredNotifications(withIdentifiers: notificationsToRemove)
 
-            for info in openVenues where UserDefaults.standard.bool(forKey: info.id + "Filter") {
+            for info in openVenues {
 
                 let identifier = info.id
 
@@ -137,9 +161,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 
         if let infos = try? result.get() {
 
-            let filteredInfos = infos.filter { UserDefaults.standard.bool(forKey: $0.id + "Filter") }
-
-            for info in filteredInfos {
+            for info in infos {
                 let item = NSMenuItem()
                 item.representedObject = info
                 item.title = (info.open ? "🟩 " : "🟥 ") + info.name
@@ -148,7 +170,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
                 menu.addItem(item)
             }
 
-            if filteredInfos.contains(where: { $0.open }) {
+            if infos.contains(where: { $0.open }) {
                 statusBarItem.button?.layer?.backgroundColor = NSColor.systemGreen.cgColor
             } else {
                 statusBarItem.button?.layer?.backgroundColor = NSColor.clear.cgColor
