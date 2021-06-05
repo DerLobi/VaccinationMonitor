@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  VaccinationMonitor
+
+  Created by Christian Lobach on 05.06.21.
+  
+*/
+
+"preferences" = "Preferences…";
+"quit" = "Quit VaccinationMonitor";
+"updated.at" = "Last updated %@";
+"not.updated.yet" = "Not updated yet";
+"update.interval.title" = "Update every %i seconds";
+"notification.body" = "New vaccination appointments just became available.";
+"connection.error" = "⚠️ Connection Error";

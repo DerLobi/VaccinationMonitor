@@ -57,7 +57,8 @@ class ViewController: NSViewController {
         UserDefaults.standard
             .publisher(for: \.pollingInterval)
             .sink { [weak self] interval in
-                self?.intervalText = "Update every \(Int(interval)) seconds"
+                self?.intervalText = String(format: NSLocalizedString("update.interval.title", comment: ""),
+                                            Int(interval))
             }
             .store(in: &cancellables)
 

@@ -13,7 +13,7 @@ class UpdatedAtMenuItem: NSMenuItem {
 
     init(updatedAt: Date?) {
         self.updatedAt = updatedAt
-        super.init(title: "Not updated", action: nil, keyEquivalent: "")
+        super.init(title: "", action: nil, keyEquivalent: "")
     }
 
     required init(coder: NSCoder) {
@@ -30,9 +30,10 @@ class UpdatedAtMenuItem: NSMenuItem {
     override var title: String {
         get {
             if let updatedAt = updatedAt {
-                return "Last updated " + Self.updateFormatter.localizedString(for: updatedAt, relativeTo: Date())
+                return String(format: NSLocalizedString("updated.at", comment: ""),
+                              Self.updateFormatter.localizedString(for: updatedAt, relativeTo: Date()))
             } else {
-                return "Not updated yet"
+                return NSLocalizedString("not.updated.yet", comment: "")
             }
         }
         set {}

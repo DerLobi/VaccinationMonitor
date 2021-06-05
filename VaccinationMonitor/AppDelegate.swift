@@ -90,7 +90,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 
                 let content = UNMutableNotificationContent()
                 content.title = info.name
-                content.body = "New vaccination appointments just became available."
+                content.body = NSLocalizedString("notification.body", comment: "")
                 if let url = info.url {
                     content.userInfo = [
                         "url": url.absoluteString
@@ -140,16 +140,18 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 
         } else {
             let item = NSMenuItem()
-            item.title = "⚠️ Connection Error"
+            item.title = NSLocalizedString("connection.error", comment: "")
             menu.addItem(item)
         }
 
         menu.addItem(.separator())
-        let preferencesItem = NSMenuItem(title: "Preferences", action: #selector(self.showPreferences(_:)), keyEquivalent: ",")
+        let preferencesItem = NSMenuItem(title: NSLocalizedString("preferences", comment: ""),
+                                         action: #selector(self.showPreferences(_:)),
+                                         keyEquivalent: ",")
         menu.addItem(preferencesItem)
 
         menu.addItem(
-            NSMenuItem(title: "Quit VaccinationMonitor",
+            NSMenuItem(title: NSLocalizedString("quit", comment: ""),
                        action: #selector(NSApplication.terminate(_:)),
                        keyEquivalent: "q"))
 

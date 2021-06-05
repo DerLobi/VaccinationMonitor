@@ -1,0 +1,93 @@
+
+/* Class = "NSMenuItem"; title = "VaccinationMonitor"; ObjectID = "1Xt-HY-uBw"; */
+"1Xt-HY-uBw.title" = "VaccinationMonitor";
+
+/* Class = "NSMenuItem"; title = "Quit VaccinationMonitor"; ObjectID = "4sb-4s-VLi"; */
+"4sb-4s-VLi.title" = "Quit VaccinationMonitor";
+
+/* Class = "NSMenuItem"; title = "About VaccinationMonitor"; ObjectID = "5kV-Vb-QxS"; */
+"5kV-Vb-QxS.title" = "About VaccinationMonitor";
+
+/* Class = "NSButtonCell"; title = "Erika-Heß-Eisstadion (Moderna)"; ObjectID = "9eh-QZ-dr9"; */
+"9eh-QZ-dr9.title" = "Erika-Heß-Eisstadion (Moderna)";
+
+/* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
+"AYu-sK-qS6.title" = "Main Menu";
+
+/* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "BOF-NM-1cW"; */
+"BOF-NM-1cW.title" = "Preferences…";
+
+/* Class = "NSButtonCell"; title = "Open System Preferences"; ObjectID = "BnM-1c-U6C"; */
+"BnM-1c-U6C.title" = "Open System Preferences";
+
+/* Class = "NSMenuItem"; title = "Close"; ObjectID = "DVo-aG-piG"; */
+"DVo-aG-piG.title" = "Close";
+
+/* Class = "NSButtonCell"; title = "Messe Berlin (BioNTech Pfizer)"; ObjectID = "Dv8-6e-HvV"; */
+"Dv8-6e-HvV.title" = "Messe Berlin (BioNTech Pfizer)";
+
+/* Class = "NSButtonCell"; title = "Send notifications if new appointments are available"; ObjectID = "E0P-W6-AmI"; */
+"E0P-W6-AmI.title" = "Send notifications if new appointments are available";
+
+/* Class = "NSButtonCell"; title = "Velodrom Berlin (BioNTech Pfizer)"; ObjectID = "Eqx-4f-a7q"; */
+"Eqx-4f-a7q.title" = "Velodrom Berlin (BioNTech Pfizer)";
+
+/* Class = "NSMenu"; title = "Help"; ObjectID = "F2S-fz-NVQ"; */
+"F2S-fz-NVQ.title" = "Help";
+
+/* Class = "NSMenuItem"; title = "VaccinationMonitor Help"; ObjectID = "FKE-Sm-Kum"; */
+"FKE-Sm-Kum.title" = "VaccinationMonitor Help";
+
+/* Class = "NSWindow"; title = "Preferences"; ObjectID = "IQv-IB-iLA"; */
+"IQv-IB-iLA.title" = "VaccinationMonitor Preferences";
+
+/* Class = "NSMenuItem"; title = "Show All"; ObjectID = "Kd2-mp-pUS"; */
+"Kd2-mp-pUS.title" = "Show All";
+
+/* Class = "NSMenuItem"; title = "Bring All to Front"; ObjectID = "LE2-aR-0XJ"; */
+"LE2-aR-0XJ.title" = "Bring All to Front";
+
+/* Class = "NSMenuItem"; title = "Minimize"; ObjectID = "OY7-WF-poV"; */
+"OY7-WF-poV.title" = "Minimize";
+
+/* Class = "NSMenuItem"; title = "Hide VaccinationMonitor"; ObjectID = "Olw-nP-bQN"; */
+"Olw-nP-bQN.title" = "Hide VaccinationMonitor";
+
+/* Class = "NSMenuItem"; title = "Zoom"; ObjectID = "R4o-n2-Eq4"; */
+"R4o-n2-Eq4.title" = "Zoom";
+
+/* Class = "NSMenu"; title = "Window"; ObjectID = "Td7-aD-5lo"; */
+"Td7-aD-5lo.title" = "Window";
+
+/* Class = "NSTextFieldCell"; title = "Update every 5 seconds"; ObjectID = "ULg-Xy-rHW"; */
+"ULg-Xy-rHW.title" = "Update every 5 seconds";
+
+/* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "Vdr-fp-XzO"; */
+"Vdr-fp-XzO.title" = "Hide Others";
+
+/* Class = "NSButtonCell"; title = "Flughafen Tempelhof (AstraZeneca / Moderna)"; ObjectID = "YcC-KT-I9g"; */
+"YcC-KT-I9g.title" = "Flughafen Tempelhof (AstraZeneca / Moderna)";
+
+/* Class = "NSMenuItem"; title = "Window"; ObjectID = "aUF-d1-5bR"; */
+"aUF-d1-5bR.title" = "Window";
+
+/* Class = "NSMenu"; title = "File"; ObjectID = "bib-Uj-vzu"; */
+"bib-Uj-vzu.title" = "File";
+
+/* Class = "NSButtonCell"; title = "Arena Berlin (BioNTech Pfizer)"; ObjectID = "brB-3e-ATU"; */
+"brB-3e-ATU.title" = "Arena Berlin (BioNTech Pfizer)";
+
+/* Class = "NSMenuItem"; title = "File"; ObjectID = "dMs-cI-mzQ"; */
+"dMs-cI-mzQ.title" = "File";
+
+/* Class = "NSMenu"; title = "VaccinationMonitor"; ObjectID = "uQy-DD-JDr"; */
+"uQy-DD-JDr.title" = "VaccinationMonitor";
+
+/* Class = "NSBox"; title = "Venues"; ObjectID = "udB-V2-YGh"; */
+"udB-V2-YGh.title" = "Venues";
+
+/* Class = "NSMenuItem"; title = "Help"; ObjectID = "wpr-3q-Mcd"; */
+"wpr-3q-Mcd.title" = "Help";
+
+/* Class = "NSButtonCell"; title = "Flughafen Berlin-Tegel (BioNTech Pfizer / Moderna)"; ObjectID = "y5T-J5-2Hx"; */
+"y5T-J5-2Hx.title" = "Flughafen Berlin-Tegel (BioNTech Pfizer / Moderna)";
