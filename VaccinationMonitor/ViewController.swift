@@ -8,6 +8,7 @@
 import Cocoa
 import Combine
 import UserNotifications
+import OSLog
 
 class ViewController: NSViewController {
 
@@ -18,7 +19,13 @@ class ViewController: NSViewController {
             if notificationsEnabled {
 
                 UNUserNotificationCenter.current()
-                    .requestAuthorization(options: [.alert, .sound]) { [weak self] granted, error in
+                    .requestAuthorization(options: [.alert, .sound]) { [weak self] granted, authorizationError in
+
+                        if let authorizationError = authorizationError {
+                            Logger.app.error("Error while requesting authorization: \(authorizationError.localizedDescription, privacy: .public)")
+                        }
+                        Logger.app.info("Notification authorization granted: \(granted)")
+
                         if granted {
                             UserDefaults.standard.set(true, forKey: "notificationsEnabled")
                         } else {

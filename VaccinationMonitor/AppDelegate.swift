@@ -8,6 +8,7 @@
 import Cocoa
 import Combine
 import UserNotifications
+import OSLog
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -56,21 +57,28 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
     }
 
     private func sendNotificationIfNeeded(for result: Result<[VenueInfo], Error>) {
-        guard UserDefaults.standard.bool(forKey: "notificationsEnabled"),
-              let infos = try? result.get() else { return }
+        guard UserDefaults.standard.bool(forKey: "notificationsEnabled") else {
+            Logger.app.info("Not sending notifications because it is not enabled.")
+            return
+        }
+        guard let infos = try? result.get() else {
+            Logger.app.info("Not sending notifications because response was empty or had an error.")
+            return
+        }
         let openVenues = infos.filter(\.open)
         let center = UNUserNotificationCenter.current()
 
         center.getDeliveredNotifications { deliveredNotifications in
 
             let openVenueIDs = openVenues.map(\.id)
-            print("currently open: \(openVenueIDs)")
+            Logger.app.info("currently open: \(openVenueIDs, privacy: .public)")
 
             let notificationsToRemove = deliveredNotifications
                 .map { $0.request.identifier }
                 .filter { !openVenueIDs.contains($0) }
 
-            print("removing notifications for \(notificationsToRemove)")
+            Logger.app.info("removing notifications for: \(notificationsToRemove, privacy: .public)")
+
             center.removeDeliveredNotifications(withIdentifiers: notificationsToRemove)
 
             for info in openVenues where UserDefaults.standard.bool(forKey: info.id + "Filter") {
@@ -89,10 +97,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
                 }
 
                 let request = UNNotificationRequest(identifier: identifier, content: content, trigger: nil)
-                print("showing notification for \(identifier)")
+                Logger.app.info("showing notification for \(identifier, privacy: .public)")
+
                 UNUserNotificationCenter.current().add(request) { error in
                     if let error = error {
-                        print(error.localizedDescription)
+                        Logger.app.error("Error while adding notification request: \(error.localizedDescription, privacy: .public)")
                     }
                 }
             }

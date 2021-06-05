@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import OSLog
 
 struct APIResponse: Decodable {
     let stats: [VenueInfo]
@@ -16,9 +17,6 @@ class APIClient {
     private static let apiURL = URL(string: "https://api.impfstoff.link/?robot=1")!
 
     static func newPublisher(with pollingInterval: TimeInterval) -> AnyPublisher<Result<[VenueInfo], Error>, Never> {
-        print("newPublisher")
-
-
         let timer = Timer
             .publish(every: pollingInterval, on: .main, in: .default)
             .autoconnect()
@@ -30,7 +28,8 @@ class APIClient {
                 let response = try decoder.decode(APIResponse.self, from: data)
                 return .success(response.stats)
             }
-            .catch { error in
+            .catch { error-> Just<Result<[VenueInfo], Error>> in
+                Logger.app.error("Error from APIClient: \(error.localizedDescription, privacy: .public)")
                 return Just(.failure(error))
             }
 
