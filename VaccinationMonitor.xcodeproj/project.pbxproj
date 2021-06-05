@@ -337,7 +337,7 @@
 				CODE_SIGN_ENTITLEMENTS = VaccinationMonitor/VaccinationMonitor.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = ES9894LW4A;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = VaccinationMonitor/Info.plist;
@@ -345,6 +345,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.christian-lobach.VaccinationMonitor";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -359,7 +360,7 @@
 				CODE_SIGN_ENTITLEMENTS = VaccinationMonitor/VaccinationMonitor.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = ES9894LW4A;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = VaccinationMonitor/Info.plist;
@@ -367,6 +368,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.christian-lobach.VaccinationMonitor";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
