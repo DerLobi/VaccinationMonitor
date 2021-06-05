@@ -71,13 +71,15 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
         center.getDeliveredNotifications { deliveredNotifications in
 
             let openVenueIDs = openVenues.map(\.id)
-            Logger.app.info("currently open: \(openVenueIDs, privacy: .public)")
+            Logger.app.debug("currently open: \(openVenueIDs, privacy: .public)")
 
             let notificationsToRemove = deliveredNotifications
                 .map { $0.request.identifier }
                 .filter { !openVenueIDs.contains($0) }
 
-            Logger.app.info("removing notifications for: \(notificationsToRemove, privacy: .public)")
+            if !notificationsToRemove.isEmpty {
+                Logger.app.info("removing notifications for: \(notificationsToRemove, privacy: .public)")
+            }
 
             center.removeDeliveredNotifications(withIdentifiers: notificationsToRemove)
 

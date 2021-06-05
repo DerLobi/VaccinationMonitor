@@ -23,6 +23,7 @@ class APIClient {
 
         let publisher = URLSession.shared.dataTaskPublisher(for: apiURL)
             .tryMap { data, response -> Result<[VenueInfo], Error> in
+                Logger.app.debug("Got API response")
                 let decoder = JSONDecoder()
                 decoder.dateDecodingStrategy = .millisecondsSince1970
                 let response = try decoder.decode(APIResponse.self, from: data)
