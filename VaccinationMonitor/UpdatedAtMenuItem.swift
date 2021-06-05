@@ -9,7 +9,7 @@ import Cocoa
 
 class UpdatedAtMenuItem: NSMenuItem {
 
-    let updatedAt: Date?
+    private let updatedAt: Date?
 
     init(updatedAt: Date?) {
         self.updatedAt = updatedAt

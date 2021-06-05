@@ -13,7 +13,16 @@ import OSLog
 @main
 class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDelegate {
 
-    private var statusBarItem: NSStatusItem?
+    private lazy var statusBarItem: NSStatusItem = {
+        let item = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+        if let button = item.button {
+            button.title = "💉"
+            button.setAccessibilityLabel("VaccinationMonitor")
+            button.wantsLayer = true
+            button.layer?.cornerRadius = 4
+        }
+        return item
+    }()
 
     private var networkCancellable: AnyCancellable?
     private var intervalCancellable: AnyCancellable?
@@ -31,7 +40,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 
         UNUserNotificationCenter.current().delegate = self
 
-        setUpMenuItem()
+        updateMenu(for: .success([]))
 
         intervalCancellable = UserDefaults.standard
             .publisher(for: \.pollingInterval)
@@ -39,7 +48,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
             .sink { [weak self] interval in
                 self?.setUpPublisher(with: interval)
             }
-
     }
 
     @objc private func setUpPublisher(with pollingInterval: TimeInterval) {
@@ -52,7 +60,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
                 self?.sendNotificationIfNeeded(for: result)
                 self?.updateMenu(for: result)
             }
-
     }
 
     private func sendNotificationIfNeeded(for result: Result<[VenueInfo], Error>) {
@@ -106,25 +113,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
                     }
                 }
             }
-
         }
-
-    }
-
-    func setUpMenuItem() {
-        guard statusBarItem == nil else { return }
-        statusBarItem = NSStatusBar.system.statusItem(withLength: CGFloat(NSStatusItem.variableLength))
-        if let button = statusBarItem?.button {
-            button.title = "💉"
-            button.setAccessibilityLabel("VaccinationMonitor")
-            button.wantsLayer = true
-            button.layer?.cornerRadius = 4
-        }
-        updateMenu(for: .success([]))
     }
 
     private func updateMenu(for result: Result<[VenueInfo], Error>) {
-        guard let statusBarItem = statusBarItem else { return }
         let menu = NSMenu(title: "VaccinationMonitor")
 
         menu.addItem(UpdatedAtMenuItem(updatedAt: lastUpdate))
@@ -168,13 +160,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
         statusBarItem.menu = menu
     }
 
-    @objc func openVenueURL(_ sender: NSMenuItem) {
+    @objc private func openVenueURL(_ sender: NSMenuItem) {
         guard let venue = sender.representedObject as? VenueInfo,
               let url = venue.url else { return }
         NSWorkspace.shared.open(url)
     }
 
-    @objc func showPreferences(_ sender: NSMenuItem) {
+    @objc private func showPreferences(_ sender: NSMenuItem) {
         windowController.window?.makeKeyAndOrderFront(sender)
     }
 

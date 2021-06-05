@@ -27,13 +27,13 @@ class ViewController: NSViewController {
                         Logger.app.info("Notification authorization granted: \(granted)")
 
                         if granted {
-                            UserDefaults.standard.set(true, forKey: "notificationsEnabled")
+                            UserDefaults.standard.notificationsEnabled = true
                         } else {
                             self?.notificationsEnabled = false
                         }
                     }
             } else {
-                UserDefaults.standard.set(false, forKey: "notificationsEnabled")
+                UserDefaults.standard.notificationsEnabled = false
                 UNUserNotificationCenter.current().removeAllDeliveredNotifications()
             }
         }
@@ -56,16 +56,18 @@ class ViewController: NSViewController {
 
         UserDefaults.standard
             .publisher(for: \.pollingInterval)
-            .sink { [weak self] interval in
-                self?.intervalText = String(format: NSLocalizedString("update.interval.title", comment: ""),
+            .map { interval in
+                String(format: NSLocalizedString("update.interval.title",
+                                                                      comment: ""),
                                             Int(interval))
             }
+            .assign(to: \.intervalText, on: self)
             .store(in: &cancellables)
 
         checkNotificationSettings()
     }
 
-    func checkNotificationSettings() {
+    private func checkNotificationSettings() {
         UNUserNotificationCenter.current().getNotificationSettings { [weak self] settings in
             DispatchQueue.main.async {
                 self?.canEnableNotifications = settings.authorizationStatus != .denied
@@ -73,7 +75,7 @@ class ViewController: NSViewController {
         }
     }
 
-    @IBAction func openSystemPreferences(_ sender: Any) {
+    @IBAction private func openSystemPreferences(_ sender: Any) {
         let notificationSettingsURL = URL(string: "x-apple.systempreferences:com.apple.preference.notifications")!
         NSWorkspace.shared.open(notificationSettingsURL)
     }
