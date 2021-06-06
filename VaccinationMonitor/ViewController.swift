@@ -14,6 +14,9 @@ class ViewController: NSViewController {
 
     @objc dynamic var intervalText: String = ""
 
+    @IBOutlet weak var stepper: NSStepper!
+    @IBOutlet weak var updateLabel: NSTextField!
+
     @objc dynamic var notificationsEnabled = false {
         didSet {
             if notificationsEnabled {
@@ -46,25 +49,42 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setUpAccessibility()
+        setUpPublishers()
+
         notificationsEnabled = UserDefaults.standard.notificationsEnabled
 
+        checkNotificationSettings()
+    }
+
+    private func setUpPublishers() {
         NotificationCenter.default.publisher(for: NSApplication.didBecomeActiveNotification)
             .sink { [weak self] _ in
                 self?.checkNotificationSettings()
             }
             .store(in: &cancellables)
 
-        UserDefaults.standard
+        let pollingIntervalTitle = UserDefaults.standard
             .publisher(for: \.pollingInterval)
             .map { interval in
                 String(format: NSLocalizedString("update.interval.title",
                                                                       comment: ""),
                                             Int(interval))
             }
+
+        pollingIntervalTitle
             .assign(to: \.intervalText, on: self)
             .store(in: &cancellables)
 
-        checkNotificationSettings()
+        pollingIntervalTitle
+            .sink { [weak self] title in
+                self?.stepper.setAccessibilityValue(title)
+            }
+            .store(in: &cancellables)
+    }
+
+    private func setUpAccessibility() {
+        updateLabel.setAccessibilityRole(nil)
     }
 
     private func checkNotificationSettings() {

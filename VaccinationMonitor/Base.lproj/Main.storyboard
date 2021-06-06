@@ -295,6 +295,10 @@
                             <constraint firstItem="udB-V2-YGh" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="uR6-90-zJt"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="stepper" destination="ZiY-VG-BCy" id="xwi-Cx-HSl"/>
+                        <outlet property="updateLabel" destination="yex-zA-f9J" id="IhD-98-fTJ"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController representsSharedInstance="YES" id="QhV-i3-jqA"/>

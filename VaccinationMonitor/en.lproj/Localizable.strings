@@ -14,3 +14,7 @@
 "notification.body" = "New vaccination appointments just became available.";
 "connection.error" = "⚠️ Connection Error";
 "notification.action.title" = "Open booking page";
+"accessibility.venue.closed" = "%@, no appointments available";
+"accessibility.venue.open" = "%@, appointments currently available";
+"accessibility.no.appointments.available" = "No appointments available";
+"accessibility.appointments.available" = "Appointments available";

@@ -20,6 +20,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
             button.setAccessibilityLabel("VaccinationMonitor")
             button.wantsLayer = true
             button.layer?.cornerRadius = 4
+            button.setAccessibilityValue(NSLocalizedString("accessibility.no.appointments.available",
+                                                           comment: ""))
         }
         return item
     }()
@@ -156,6 +158,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 
     private func updateMenu(for result: Result<[VenueInfo], Error>) {
         let menu = NSMenu(title: "VaccinationMonitor")
+        menu.setAccessibilityLabel("VaccinationMonitor")
 
         menu.addItem(UpdatedAtMenuItem(updatedAt: lastUpdate))
 
@@ -164,7 +167,16 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
             for info in infos {
                 let item = NSMenuItem()
                 item.representedObject = info
-                item.title = (info.open ? "🟩 " : "🟥 ") + info.name
+                if info.open {
+                    item.title = "🟩 " + info.name
+                    let formatString = NSLocalizedString("accessibility.venue.open", comment: "")
+                    item.setAccessibilityLabel(String(format: formatString, info.name))
+                } else {
+                    item.title = "🟥 " + info.name
+                    let formatString = NSLocalizedString("accessibility.venue.closed", comment: "")
+                    item.setAccessibilityLabel(String(format: formatString, info.name))
+                }
+
                 item.target = self
                 item.action = #selector(openVenueURL)
                 menu.addItem(item)
@@ -172,8 +184,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 
             if infos.contains(where: { $0.open }) {
                 statusBarItem.button?.layer?.backgroundColor = NSColor.systemGreen.cgColor
+                statusBarItem.button?.setAccessibilityValue(NSLocalizedString("accessibility.appointments.available",
+                                                               comment: ""))
             } else {
                 statusBarItem.button?.layer?.backgroundColor = NSColor.clear.cgColor
+                statusBarItem.button?.setAccessibilityValue(NSLocalizedString("accessibility.no.appointments.available",
+                                                               comment: ""))
             }
 
         } else {

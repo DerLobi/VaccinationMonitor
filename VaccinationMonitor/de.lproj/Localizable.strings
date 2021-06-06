@@ -14,3 +14,7 @@
 "notification.body" = "Neue Impftermine sind soeben verfügbar geworden.";
 "connection.error" = "⚠️ Verbindungsfehler";
 "notification.action.title" = "Buchungsseite öffnen";
+"accessibility.venue.closed" = "%@, keine Termine verfügbar";
+"accessibility.venue.open" = "%@, Termine sind aktuell verfügbar";
+"accessibility.no.appointments.available" = "Keine Termine verfügbar";
+"accessibility.appointments.available" = "Termine sind aktuell verfügbar";
