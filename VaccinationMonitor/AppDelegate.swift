@@ -220,6 +220,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, UNUserNotificationCenterDele
 
     @objc private func showPreferences(_ sender: NSMenuItem) {
         windowController.window?.makeKeyAndOrderFront(sender)
+        NSApp.activate(ignoringOtherApps: true)
     }
 
     // MARK: - UNUserNotificationCenterDelegate
