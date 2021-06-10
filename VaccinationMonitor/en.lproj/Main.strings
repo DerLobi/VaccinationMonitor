@@ -8,9 +8,6 @@
 /* Class = "NSMenuItem"; title = "About VaccinationMonitor"; ObjectID = "5kV-Vb-QxS"; */
 "5kV-Vb-QxS.title" = "About VaccinationMonitor";
 
-/* Class = "NSButtonCell"; title = "Erika-Heß-Eisstadion (Moderna)"; ObjectID = "9eh-QZ-dr9"; */
-"9eh-QZ-dr9.title" = "Erika-Heß-Eisstadion (Moderna)";
-
 /* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
 "AYu-sK-qS6.title" = "Main Menu";
 
@@ -23,14 +20,8 @@
 /* Class = "NSMenuItem"; title = "Close"; ObjectID = "DVo-aG-piG"; */
 "DVo-aG-piG.title" = "Close";
 
-/* Class = "NSButtonCell"; title = "Messe Berlin (BioNTech Pfizer)"; ObjectID = "Dv8-6e-HvV"; */
-"Dv8-6e-HvV.title" = "Messe Berlin (BioNTech Pfizer)";
-
 /* Class = "NSButtonCell"; title = "Send notifications if new appointments are available"; ObjectID = "E0P-W6-AmI"; */
 "E0P-W6-AmI.title" = "Send notifications if new appointments are available";
-
-/* Class = "NSButtonCell"; title = "Velodrom Berlin (BioNTech Pfizer)"; ObjectID = "Eqx-4f-a7q"; */
-"Eqx-4f-a7q.title" = "Velodrom Berlin (BioNTech Pfizer)";
 
 /* Class = "NSMenu"; title = "Help"; ObjectID = "F2S-fz-NVQ"; */
 "F2S-fz-NVQ.title" = "Help";
@@ -65,17 +56,11 @@
 /* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "Vdr-fp-XzO"; */
 "Vdr-fp-XzO.title" = "Hide Others";
 
-/* Class = "NSButtonCell"; title = "Flughafen Tempelhof (AstraZeneca / Moderna)"; ObjectID = "YcC-KT-I9g"; */
-"YcC-KT-I9g.title" = "Flughafen Tempelhof (AstraZeneca / Moderna)";
-
 /* Class = "NSMenuItem"; title = "Window"; ObjectID = "aUF-d1-5bR"; */
 "aUF-d1-5bR.title" = "Window";
 
 /* Class = "NSMenu"; title = "File"; ObjectID = "bib-Uj-vzu"; */
 "bib-Uj-vzu.title" = "File";
-
-/* Class = "NSButtonCell"; title = "Arena Berlin (BioNTech Pfizer)"; ObjectID = "brB-3e-ATU"; */
-"brB-3e-ATU.title" = "Arena Berlin (BioNTech Pfizer)";
 
 /* Class = "NSMenuItem"; title = "File"; ObjectID = "dMs-cI-mzQ"; */
 "dMs-cI-mzQ.title" = "File";
@@ -89,5 +74,3 @@
 /* Class = "NSMenuItem"; title = "Help"; ObjectID = "wpr-3q-Mcd"; */
 "wpr-3q-Mcd.title" = "Help";
 
-/* Class = "NSButtonCell"; title = "Flughafen Berlin-Tegel (BioNTech Pfizer / Moderna)"; ObjectID = "y5T-J5-2Hx"; */
-"y5T-J5-2Hx.title" = "Flughafen Berlin-Tegel (BioNTech Pfizer / Moderna)";
