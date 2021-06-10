@@ -15,6 +15,7 @@ struct VenueInfo: Decodable {
         "messe": "https://www.doctolib.de/institut/berlin/ciz-berlin-berlin?pid=practice-158434",
         "velodrom": "https://www.doctolib.de/institut/berlin/ciz-berlin-berlin?pid=practice-158435",
         "tegel": "https://www.doctolib.de/institut/berlin/ciz-berlin-berlin?pid=practice-158436",
+        "tegelmod": "https://www.doctolib.de/institut/berlin/ciz-berlin-berlin?pid=practice-191612",
         "erika": "https://www.doctolib.de/institut/berlin/ciz-berlin-berlin?pid=practice-158437"
     ]
 

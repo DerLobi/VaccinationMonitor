@@ -18,6 +18,7 @@ extension UserDefaults {
             "messeFilter": true,
             "velodromFilter": true,
             "tegelFilter": true,
+            "tegelmodFilter": true,
             "erikaFilter": true
         ])
     }
@@ -84,6 +85,15 @@ extension UserDefaults {
         }
         set {
             set(newValue, forKey: "tegelFilter")
+        }
+    }
+
+    @objc var tegelmodFilter: Bool {
+        get {
+            return bool(forKey: "tegelmodFilter")
+        }
+        set {
+            set(newValue, forKey: "tegelmodFilter")
         }
     }
 

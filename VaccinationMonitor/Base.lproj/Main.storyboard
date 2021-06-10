@@ -137,11 +137,11 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="VaccinationMonitor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="500" height="351"/>
+                        <rect key="frame" x="0.0" y="0.0" width="500" height="375"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yex-zA-f9J">
-                                <rect key="frame" x="38" y="311" width="152" height="16"/>
+                                <rect key="frame" x="38" y="335" width="152" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Update every 5 seconds" id="ULg-Xy-rHW">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -152,16 +152,16 @@
                                 </connections>
                             </textField>
                             <box title="Venues" translatesAutoresizingMaskIntoConstraints="NO" id="udB-V2-YGh">
-                                <rect key="frame" x="17" y="97" width="466" height="196"/>
+                                <rect key="frame" x="17" y="97" width="466" height="220"/>
                                 <view key="contentView" id="nya-GJ-8Wc">
-                                    <rect key="frame" x="3" y="3" width="460" height="178"/>
+                                    <rect key="frame" x="3" y="3" width="460" height="202"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W5q-yb-pAM">
-                                            <rect key="frame" x="20" y="22" width="420" height="136"/>
+                                            <rect key="frame" x="20" y="22" width="420" height="160"/>
                                             <subviews>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9G0-S0-B2W">
-                                                    <rect key="frame" x="-2" y="119" width="210" height="18"/>
+                                                    <rect key="frame" x="-2" y="143" width="210" height="18"/>
                                                     <buttonCell key="cell" type="check" title="Arena Berlin (BioNTech Pfizer)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="brB-3e-ATU">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                         <font key="font" metaFont="system"/>
@@ -171,7 +171,7 @@
                                                     </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fTQ-il-ys6">
-                                                    <rect key="frame" x="-2" y="95" width="308" height="18"/>
+                                                    <rect key="frame" x="-2" y="119" width="308" height="18"/>
                                                     <buttonCell key="cell" type="check" title="Flughafen Tempelhof (AstraZeneca / Moderna)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="YcC-KT-I9g">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                         <font key="font" metaFont="system"/>
@@ -181,7 +181,7 @@
                                                     </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DiV-AY-hqK">
-                                                    <rect key="frame" x="-2" y="71" width="214" height="18"/>
+                                                    <rect key="frame" x="-2" y="95" width="214" height="18"/>
                                                     <buttonCell key="cell" type="check" title="Messe Berlin (BioNTech Pfizer)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Dv8-6e-HvV">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                         <font key="font" metaFont="system"/>
@@ -191,7 +191,7 @@
                                                     </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wK0-dh-f44">
-                                                    <rect key="frame" x="-2" y="47" width="232" height="18"/>
+                                                    <rect key="frame" x="-2" y="71" width="232" height="18"/>
                                                     <buttonCell key="cell" type="check" title="Velodrom Berlin (BioNTech Pfizer)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Eqx-4f-a7q">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                         <font key="font" metaFont="system"/>
@@ -201,13 +201,23 @@
                                                     </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="K2y-M2-MXK">
-                                                    <rect key="frame" x="-2" y="23" width="337" height="18"/>
-                                                    <buttonCell key="cell" type="check" title="Flughafen Berlin-Tegel (BioNTech Pfizer / Moderna)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="y5T-J5-2Hx">
+                                                    <rect key="frame" x="-2" y="47" width="272" height="18"/>
+                                                    <buttonCell key="cell" type="check" title="Flughafen Berlin-Tegel (BioNTech Pfizer)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="y5T-J5-2Hx">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
                                                     <connections>
                                                         <binding destination="QhV-i3-jqA" name="value" keyPath="values.tegelFilter" id="JZx-de-blb"/>
+                                                    </connections>
+                                                </button>
+                                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IPs-Dh-DF6">
+                                                    <rect key="frame" x="-2" y="23" width="229" height="18"/>
+                                                    <buttonCell key="cell" type="check" title="Flughafen Berlin-Tegel (Moderna)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="232-0y-Ra0">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <binding destination="QhV-i3-jqA" name="value" keyPath="values.tegelmodFilter" id="8jo-32-hOn"/>
                                                     </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Has-2X-Wk2">
@@ -228,8 +238,10 @@
                                                 <integer value="1000"/>
                                                 <integer value="1000"/>
                                                 <integer value="1000"/>
+                                                <integer value="1000"/>
                                             </visibilityPriorities>
                                             <customSpacing>
+                                                <real value="3.4028234663852886e+38"/>
                                                 <real value="3.4028234663852886e+38"/>
                                                 <real value="3.4028234663852886e+38"/>
                                                 <real value="3.4028234663852886e+38"/>
@@ -259,7 +271,7 @@
                                 </connections>
                             </button>
                             <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZiY-VG-BCy">
-                                <rect key="frame" x="193" y="305" width="19" height="28"/>
+                                <rect key="frame" x="193" y="329" width="19" height="28"/>
                                 <stepperCell key="cell" continuous="YES" alignment="left" minValue="1" maxValue="120" doubleValue="5" id="ZnE-kP-fQC"/>
                                 <connections>
                                     <binding destination="QhV-i3-jqA" name="value" keyPath="values.pollingInterval" id="TKt-Qr-8YS"/>
