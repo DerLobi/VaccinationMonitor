@@ -1,5 +1,8 @@
 # VaccinationMonitor
 
+**Update:** Luckily, appointments are now readily available, so everyone who wants to get vaccinated can get an appointment without the need to hunt one down. See [this website](https://service.berlin.de/dienstleistung/330073/) and scroll down to the bottom to find links to book your appointments.
+This app does not work anymore.
+
 If you live in Berlin you might know how difficult it is to find an appointment to get a COVID-19 vaccination.
 
 This app notifies you as soon as new appointments open up in one of the vaccination centers.
